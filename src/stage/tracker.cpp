@@ -288,9 +288,9 @@ BETTER_SMS_FOR_CALLBACK void updateShineBlueTracker(TMarDirector *director) {
         s_blue_counter = blue_count;
     }
 
-    snprintf(s_shine_text_buffer, 64, "Shine Sprites: %lu/%lu", s_stage_shines_collected,
+    snprintf(s_shine_text_buffer, 64, "Shine Sprites: %u/%u", s_stage_shines_collected,
              s_stage_shines_max);
-    snprintf(s_blue_text_buffer, 64, "Blue Coins: %lu/%lu", s_stage_blues_collected,
+    snprintf(s_blue_text_buffer, 64, "Blue Coins: %u/%u", s_stage_blues_collected,
              s_stage_blues_max);
 }
 

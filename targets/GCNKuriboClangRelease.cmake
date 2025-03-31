@@ -2,19 +2,19 @@ set(CMAKE_CROSSCOMPILING TRUE)
 set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_SYSTEM_PROCESSOR powerpc)
 
-set(CMAKE_C_COMPILER "${PROJECT_SOURCE_DIR}/lib/BetterSunshineEngine/compiler/clang.exe")
-set(CMAKE_CXX_COMPILER "${PROJECT_SOURCE_DIR}/lib/BetterSunshineEngine/compiler/clang.exe")
-set(CMAKE_C_LINK_EXECUTABLE "${PROJECT_SOURCE_DIR}/lib/BetterSunshineEngine/compiler/clang.exe")
+set(CMAKE_C_COMPILER "$ENV{DEVKITPPC}/bin/powerpc-eabi-clang")
+set(CMAKE_CXX_COMPILER "$ENV{DEVKITPPC}/bin/powerpc-eabi-clang")
+set(CMAKE_C_LINK_EXECUTABLE "$ENV{DEVKITPPC}/bin/powerpc-eabi-clang")
 
-set(triple powerpc-gecko-ibm-kuribo-eabi)
+set(triple powerpc-unknown-linux-gnu) #set(triple powerpc-gecko-ibm-kuribo-eabi)
 set(CMAKE_C_COMPILER_TARGET ${triple})
 set(CMAKE_CXX_COMPILER_TARGET ${triple})
 
-if(WIN32)
-	set(CMAKE_LIBRARY_PATH "C:/Windows/System32")
-endif(WIN32)
+#if(WIN32)
+#	set(CMAKE_LIBRARY_PATH "C:/Windows/System32")
+#endif(WIN32)
 
-set(CMAKE_SYSROOT "C:/msys64/mingw64")
+#set(CMAKE_SYSROOT "C:/msys64/mingw64")
 
 set(CMAKE_EXE_LINKER_FLAGS_INIT "-fuse-ld=lld -T ${PROJECT_SOURCE_DIR}/lib/BetterSunshineEngine/linker.ld")
 set(CMAKE_MODULE_LINKER_FLAGS_INIT "-fuse-ld=lld -T ${PROJECT_SOURCE_DIR}/lib/BetterSunshineEngine/linker.ld")
@@ -46,6 +46,7 @@ set(SMS_COMPILE_FLAGS
 
     -Werror -Wno-main 
     -Wno-incompatible-library-redeclaration
+    -Wno-keyword-compat -Wno-deprecated-builtins
 )
 
 set(SMS_LINK_FLAGS
@@ -59,9 +60,10 @@ set(SMS_LINK_FLAGS
     -fno-use-cxa-atexit -fno-c++-static-destructors
     -fno-function-sections -fno-data-sections
     -fpermissive -Werror
+    -Wno-keyword-compat -Wno-deprecated-builtins
 )
 
 set(CMAKE_C_COMPILER_FORCED TRUE)
 set(CMAKE_CXX_COMPILER_FORCED TRUE)
 
-set(CMAKE_OBJCOPY "${PROJECT_SOURCE_DIR}/lib/BetterSunshineEngine/compiler/powerpc-eabi-objcopy.exe" CACHE PATH "" FORCE)
+set(CMAKE_OBJCOPY "$ENV{DEVKITPPC}/bin/powerpc-eabi-objcopy" CACHE PATH "" FORCE)
